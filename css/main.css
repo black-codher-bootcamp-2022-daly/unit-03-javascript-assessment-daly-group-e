@@ -1,1 +1,128 @@
-/*stylesheet*/
+{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        font-family: 'Laila', sans-serif;
+        color: black;
+    }
+
+    .container {
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 100px 0;/ this adds a gap to the top and bottom */ background-color: white;
+    }
+
+    .timeline {
+        width: 80%;
+        height: auto;
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .timeline ul {
+        list-style: none;
+    }
+
+    .timeline ul li {
+        padding: 20px;
+        background-color: whitesmoke;
+        color: black;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .timeline ul li:last-child {
+        margin-bottom: 0;
+    }
+
+    .timeline-item h1 {
+        font-size: 25px;
+        font-weight: 500;
+        line-height: 30px;
+        margin-bottom: 10px;
+    }
+
+    .timeline-item h1:hover {
+        color: palevioletred;/ this enables colour change when you hover and added text decoration/ text-shadow: black 1px;
+        text-decoration: overline;
+    }
+
+    .timeline-item p {
+        font-size: 16px;
+        line-height: 30px;
+        font-weight: 300;
+    }
+
+    .timeline-item .timeline-item-date {
+        / this adds timeline date to the cards/ font-size: 13px;
+        font-weight: 300;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+    }
+
+    @media screen and (min-width:768px) {
+        .timeline::before {
+            /this adds a timeline / content: '';
+            position: absolute;
+            height: 100%;
+            width: 2px;
+            left: 50%;
+            transform: translateX(-50%);/ this ensures the timeline is in the center/ background-color: whitesmoke;
+        }
+
+        .timeline ul li {
+            width: 50%;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline ul li:nth-child(odd) {
+            /this pushes the cards to the left and clears right side / float: left;
+            clear: right;
+            transform: translateX(-30px);/this creates a gap inbetween the cards and the timeline/ border-radius: 20px 0px 20px 20px;
+        }
+
+        .timeline ul li:nth-child(even) {
+            / this pushes the cards to the right side an clears left side/ float: right;
+            clear: left;
+            transform: translateX(30px);
+            border-radius: 0px 20px 20px 20px;/ changes the border radius when hovering over the small circle on timeline/
+        }
+
+        .timeline ul li::after {
+            / this creates a circle for the timeline to be positioned on the timeline/ content: '';
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            background-color: whitesmoke;
+            border-radius: 50%;
+            top: 0;
+        }
+
+        .timeline ul li:nth-child(odd)::after {
+            / this positions the circle to the middle on the timeline (left to center)/ transform: translate(50%, -50%);
+            right: -30px;
+        }
+
+        .timeline ul li:nth-child(even)::after {
+            / this positions the circle to the middle on the timeline (right to center)/ transform: translate(-50%, -50%);
+            left: -30px;
+        }
+
+        .timeline ul li:hover:after {
+            background-color: palevioletred;
+        }
+
+        .timeline-item .timeline-item-date {
+            position: absolute;
+            top: -30px
+        }
+
+    }
