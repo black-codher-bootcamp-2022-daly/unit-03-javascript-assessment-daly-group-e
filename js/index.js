@@ -57,6 +57,10 @@ dates.map(({ date, title, summary }, index) => {
   item.setAttribute("class", "timeline-item");
   button.setAttribute("data-index", index);
   circle.setAttribute("class", "timeline-circle");
+  _title.setAttribute("class", "timeline-item-title");
+  _date.setAttribute("class", "timeline-item-date");
+  _caption.setAttribute("class", "timeline-item-summary");
+  button.setAttribute("class", "timeline-item-more-info");
   _title.appendChild(titleText);
   _date.appendChild(dateText);
   _caption.appendChild(captionText);
