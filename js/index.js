@@ -3,49 +3,8 @@ import { dates } from "./data.js";
 //return the timeline class element from the html file
 const timeline = document.querySelector(".timeline");
 
-//2. using a for each loop, which carries out 1 function for each array element. 
-dates.forEach((element) => {
-  //2.i.a create an element named div with the required class name, and store it within a variable named timelineItem
-  const timelineItem = document.createElement("div");
-  timelineItem.className = "timeline-item";
-  //Append timelineItem to the html timeline
-  timeline.appendChild(timelineItem);
-  //Create an h2 with required class name
-  const h2 = document.createElement("h2");
-  h2.className = "timeline-item-title";
-  // creating a text node that pulls in the title of the element, and store within it a variable called content
-  let content = document.createTextNode(element.title);
-  // append the title content into the h2
-  h2.appendChild(content);
-  // append h2 title to the html div, named timelineItem
-  timelineItem.appendChild(h2);
-
-  //2.i.b creating a span element with the required class name that contains the date for each item
-  const span = document.createElement("span");
-  span.className = "timeline-item-date";
-  content = document.createTextNode(element.date);
-  span.appendChild(content);
-  timelineItem.appendChild(span);
-
-  //2.i.c create an element, named p that displays the summary text that has the class name timeline-item-summary
-  const p = document.createElement("p");
-  p.className = "timeline-item-summary";
-  content = document.createTextNode(element.summary);
-  p.appendChild(content);
-  timelineItem.appendChild(p);
-
-  //2.i.d create a button element that opens the modal so that a visitor can see full information must have the class name timeline-item-more-info
-  const button = document.createElement("button");
-  button.className = "timeline-item-more-info";
-  // create the text to go on the button
-  const text = document.createTextNode("More info");
-  // append the "more info" text to the button
-  button.appendChild(text);
-  timelineItem.appendChild(button);
-});
-
 function getCard(index) {
-  const { date, title, image, details } = dates[index];
+  const { date, title, image, fullDescription } = dates[index];
   const wrapper = document.createElement("div");
   const cardHeader = document.createElement("div");
   const timelineItemSummary = document.createElement("div");
@@ -62,7 +21,7 @@ function getCard(index) {
   closeButton.setAttribute("id", "modal-close-button");
   const dateText = document.createTextNode(date);
   const titleText = document.createTextNode(title);
-  const detailsText = document.createTextNode(details);
+  const detailsText = document.createTextNode(fullDescription);
   _title.appendChild(titleText);
   _date.appendChild(dateText);
   seeMoreInfo.appendChild(detailsText);
@@ -84,7 +43,7 @@ function getCard(index) {
   wrapper.style.display = "flex";
   timeline.prepend(wrapper);
 }
-dates.map(({ date, title, caption }, index) => {
+dates.map(({ date, title, summary }, index) => {
   const item = document.createElement("div");
   const _date = document.createElement("span");
   const _title = document.createElement("h2");
@@ -93,7 +52,7 @@ dates.map(({ date, title, caption }, index) => {
   const button = document.createElement("button");
   const dateText = document.createTextNode(date);
   const titleText = document.createTextNode(title);
-  const captionText = document.createTextNode(caption);
+  const captionText = document.createTextNode(summary);
   const buttonText = document.createTextNode("Gimme, Gimme MORE (info)");
   item.setAttribute("class", "timeline-item");
   button.setAttribute("data-index", index);
