@@ -13,11 +13,11 @@ function getCard(index) {
   const seeMoreInfo = document.createElement("p");
   const timelineImage = document.createElement("img");
   const closeButton = document.createElement("span");
-  wrapper.setAttribute("id", "card-wrapper"); //<div id ="card-wrapper"></div>
-  timelineItemSummary.setAttribute("id", "card-content");
+  wrapper.setAttribute("id", "modal-container"); //<div id ="card-wrapper"></div>
+  timelineItemSummary.setAttribute("id", "modal-full-description");
   cardHeader.setAttribute("id", "card-header");
-  timelineImage.setAttribute("src", image); 
-  timelineImage.setAttribute("alt", title); //<img src="image" alt="title"/>
+  timelineImage.setAttribute("id", "modal-image"); 
+  timelineImage.setAttribute("id", "modal-title"); //<img src="image" alt="title"/>
   closeButton.setAttribute("id", "modal-close-button");
   const dateText = document.createTextNode(date);
   const titleText = document.createTextNode(title);
