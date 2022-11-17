@@ -16,7 +16,7 @@ function getCard(index) {
   wrapper.setAttribute("id", "modal-container"); //<div id ="card-wrapper"></div>
   timelineItemSummary.setAttribute("id", "modal-full-description");
   cardHeader.setAttribute("id", "card-header");
-  timelineImage.setAttribute("id", "modal-image"); 
+  timelineImage.setAttribute("src", image); //modal-image
   timelineImage.setAttribute("id", "modal-title"); //<img src="image" alt="title"/>
   closeButton.setAttribute("id", "modal-close-button");
   const dateText = document.createTextNode(date);
