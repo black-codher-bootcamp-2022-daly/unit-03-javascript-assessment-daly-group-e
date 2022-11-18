@@ -37,13 +37,13 @@ html {
 .timeline ul li:last-child{
     margin-bottom:0;
 }
-.timeline-item h1 {
+.timeline-item h2 {
     font-size: 25px;
     font-weight: 500;
     line-height: 30px;
     margin-bottom: 10px;
 }
-.timeline-item h1:hover {
+.timeline-item h2:hover {
     color: palevioletred;             /* this enables colour change when you hover and added text decoration*/
     text-shadow: black 1px;
     text-decoration: overline;

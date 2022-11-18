@@ -53,7 +53,7 @@ dates.map(({ date, title, summary }, index) => {
   const dateText = document.createTextNode(date);
   const titleText = document.createTextNode(title);
   const captionText = document.createTextNode(summary);
-  const buttonText = document.createTextNode("Gimme, Gimme MORE (info)");
+  const buttonText = document.createTextNode("see more info");
   item.setAttribute("class", "timeline-item");
   button.setAttribute("data-index", index);
   circle.setAttribute("class", "timeline-circle");
