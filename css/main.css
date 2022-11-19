@@ -16,10 +16,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 100px 0; /* this adds a gap to the top and bottom */
+  padding: 250px 0; /* this adds a gap to the top and bottom */
   background-color: white;
 }
-
+h1 {
+  display: block;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  border-radius: 2em;
+  position: absolute;
+  margin-bottom: 1700px;
+  text-decoration: underline;
+  text-shadow: 3px black;
+  color: palevioletred;
+}
 .timeline-item {
   padding: 20px;
   background-color: whitesmoke;
@@ -77,6 +89,8 @@ body {
   height: 33px;
   width: 2px;
   background-color: darkslategray;
+  transform: scale(1);
+  animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
 #modal-close-button:before {
@@ -105,24 +119,48 @@ body {
   padding: 1em;
   border-radius: 0.5em;
   box-shadow: rgba(59, 4, 47, 0.315) 20px 20px 30px -10px;
-  color: darkslategray;
+  color: black;
 }
 
 #modal-container img {
   width: 400px;
+  margin-bottom: 1em;
 }
-.button {
+#modal-container span {
+  margin-bottom: 1em;
+}
+h2 {
+  margin-bottom: 1em;
+}
+.timeline-item-more-info {
   background: none;
   border: 2px solid darkgray;
   font-family: var(--text-font);
-  font-size: 15px;
+  font-size: 12px;
   cursor: pointer;
   display: block;
-  width: 9em;
+  background-color: white;
+  width: 10em;
   height: 2em;
   margin: 0 auto;
 }
+#modal-container {
+  top: -500px;
+  animation: drop 1.6s ease backwards;
+}
 
+@keyframes drop {
+  0% {
+    opacity: 10%;
+  }
+  70% {
+    transform: translateY(500px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
 @media screen and (min-width: 768px) {
   .timeline {
     position: relative;
@@ -154,7 +192,7 @@ body {
 
   .timeline-item:nth-child(even) {
     transform: translateX(30px);
-    border-radius: 0px 20px 20px 20px; /* changes the border radius when hovering over the small circle on timeline*/
+    border-radius: 0px 20px 20px 20px; /*changes the border radius when hovering over the small circle on timeline */
     align-self: flex-end;
   }
 
