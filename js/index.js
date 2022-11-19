@@ -3,6 +3,10 @@ import { dates } from "./data.js";
 //return the timeline class element from the html file
 const timeline = document.querySelector(".timeline");
 
+const header = document.createElement("h1");
+header.innerText = "Mayme's Bakery Timeline!🧁";
+document.body.appendChild(header);
+
 dates.map(({ date, title, summary }, index) => {
   const item = document.createElement("div");
   const dateTag = document.createElement("span");
@@ -13,7 +17,7 @@ dates.map(({ date, title, summary }, index) => {
   const dateText = document.createTextNode(date);
   const titleText = document.createTextNode(title);
   const captionText = document.createTextNode(summary);
-  const buttonText = document.createTextNode("see more info🤩");
+  const buttonText = document.createTextNode("More info..");
   item.setAttribute("class", "timeline-item");
   button.setAttribute("data-index", index);
   circle.setAttribute("class", "timeline-circle");
