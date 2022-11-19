@@ -4,11 +4,13 @@
     padding:0;
     box-sizing: border-box;
 }
+
 html {
     font-family:'Laila', sans-serif;
     color:black;
 }
-.container{
+
+body {
     min-height: 100vh;
     width: 100%;
     display: flex;
@@ -17,97 +19,183 @@ html {
     padding: 100px 0;                    /* this adds a gap to the top and bottom */
     background-color: white;
 }
-.timeline{
-    width: 80%;
-    height: auto;
-    max-width:800px;
-    margin:0 auto;
-    position: relative;
-}
-.timeline ul{
-    list-style: none;
-}
-.timeline ul li {
+  
+.timeline-item {
     padding: 20px;
     background-color: whitesmoke;
     color:black;
     border-radius: 10px;
     margin-bottom: 20px;
 }
-.timeline ul li:last-child{
-    margin-bottom:0;
-}
+
 .timeline-item h2 {
     font-size: 25px;
     font-weight: 500;
     line-height: 30px;
     margin-bottom: 10px;
 }
+
 .timeline-item h2:hover {
     color: palevioletred;             /* this enables colour change when you hover and added text decoration*/
     text-shadow: black 1px;
     text-decoration: overline;
 }
+
 .timeline-item p {
     font-size: 16px;
     line-height: 30px;
     font-weight: 300;
 }
-.timeline-item .timeline-item-date {        /* this adds timeline date to the cards*/
-    font-size: 13px;
-    font-weight: 300;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-}
 @media screen and (min-width:768px){
-    .timeline::before {                     /*this adds a timeline */
-        content:'';
-        position: absolute;
-        height: 100%;
-        width: 2px;
-        left:50%;
-        transform:translateX(-50%);         /* this ensures the timeline is in the center*/
-        background-color: whitesmoke;
+#modal-container {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color:rgb(229, 224, 224);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#modal-container 
+#modal-close-button {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+  
+#modal-close-button:before, #modal-close-button:after {
+    position: fixed;
+    content: '';
+    height: 33px;
+    width: 2px;
+    background-color: darkslategray; 
+      
+}
+  
+#modal-close-button:before {
+    transform: rotate(45deg); 
+}
+  
+#modal-close-button:after {
+    transform: rotate(-45deg);
+}
+  
+#modalTitle {
+    display: flex;
+    justify-content: space-between;
+    justify-self: stretch;
+    width: 100%;
+    margin-bottom: 1em;
+}
+  
+#modal-content {
+    width: 45em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: palevioletred;
+    padding: 1em;
+    border-radius: 0.5em;
+    box-shadow: rgba(59, 4, 47, 0.315) 20px 20px 30px -10px;
+    color: darkslategray;
+}
+
+
+#modal-content img {
+    width: 450px;
+}
+
+.timeline {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+  
+.timeline::before {                                  /*this adds a timeline */
+    content: "";
+    background: whitesmoke;
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);                     /* this ensures the timeline is in the center*/
+}
+  
+.timeline-item {
+    margin-bottom: 50px;
+    width: 50%;
+    padding: 1em;
+    position: relative;
+}
+  
+.timeline-item:nth-child(even) {
+    transform:translateX(30px);
+    border-radius: 0px 20px 20px 20px;
+    align-self: flex-end;
+}
+
+.timeline-item:nth-child(odd) {
+  transform:translateX(-30px);                   /*this creates a gap inbetween the cards and the timeline*/
+  border-radius: 20px 0px 20px 20px;
+}
+
+.timeline-circle {
+    background: white;
+    border-radius: 2em;   
+    color: black;
+}
+
+.timeline-item::after {                         /* this creates a circle for the timeline to be positioned on the timeline*/
+    content: '';
+    position: absolute;
+    height:20px;
+    width:20px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    top:0;
+}
+
+.timeline-item:nth-child(odd)::after {          /* this positions the circle to the middle on the timeline (left to center)*/
+    transform:translate(-50%, -50%);
+     right: -50px;
+ }
+
+ .timeline-item:nth-child(even)::after {         /* this positions the circle to the middle on the timeline (right to center)*/
+     transform:translate(50%, -50%);
+     left:-50px;
     }
-    .timeline ul li {
-        width: 50%;
-        margin-bottom: 50px;
-        position: relative;
-    }
-    .timeline ul li:nth-child(odd) {                 /*this pushes the cards to the left and clears right side */
-        float: left;
-        clear: right;
-        transform:translateX(-30px);                 /*this creates a gap inbetween the cards and the timeline*/
-        border-radius: 20px 0px 20px 20px;
-    }
-    .timeline ul li:nth-child(even) {                /* this pushes the cards to the right side an clears left side*/
-        float:right;
-        clear: left;
-        transform:translateX(30px);
-        border-radius: 0px 20px 20px 20px;           /* changes the border radius when hovering over the small circle on timeline*/
-    }
-    .timeline ul li::after {                         /* this creates a circle for the timeline to be positioned on the timeline*/
-        content: '';
-        position: absolute;
-        height:20px;
-        width:20px;
-        background-color: whitesmoke;
-        border-radius: 50%;
-        top:0;
-    }
-    .timeline ul li:nth-child(odd)::after {          /* this positions the circle to the middle on the timeline (left to center)*/
-       transform:translate(50%, -50%);
-        right:-30px;
-    }
-    .timeline ul li:nth-child(even)::after {         /* this positions the circle to the middle on the timeline (right to center)*/
-        transform:translate(-50%, -50%);
-        left:-30px;
-    }
-    .timeline ul li:hover:after {
-        background-color: palevioletred;
-    }
-    .timeline-item .timeline-item-date {
-        position: absolute;
-        top: -30px
-    }
+
+.timeline-item:hover::after {
+    background-color: palevioletred;
+}
+
+.timeline-item .timeline-item-date {            /* this adds timeline date to the cards*/
+    position: absolute;
+    top: -30px
+}
+
+.button {
+    background: none;
+    border: 2px solid darkgray;
+    font-family: var(--text-font);
+    font-size: 15px;
+    cursor: pointer;
+    display: block;
+    width: 9em;
+    height: 2em;
+    margin: 0 auto;
+  }
 }
