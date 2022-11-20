@@ -146,15 +146,12 @@ h2 {
 }
 #modal-container {
   top: -500px;
-  animation: drop 1.6s ease backwards;
+  animation: drop 1.7s;
 }
 
 @keyframes drop {
   0% {
     opacity: 10%;
-  }
-  70% {
-    transform: translateY(500px);
   }
   100% {
     transform: translateY(0px);
